@@ -1,11 +1,15 @@
 package com.farzadafi.model;
 
+import com.farzadafi.model.enumoration.Gender;
+import com.farzadafi.model.enumoration.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,4 +46,10 @@ public class User {
     String about;
 
     Date registerDate;
+
+    @Enumerated(EnumType.STRING)
+    Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    List<Role> roles = new ArrayList<>();
 }
