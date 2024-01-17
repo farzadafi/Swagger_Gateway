@@ -18,28 +18,26 @@ public class NationalCodeValidator implements ConstraintValidator<NationalCode, 
                 "3333333333", "4444444444", "5555555555",
                 "6666666666", "7777777777", "8888888888", "9999999999"};
 
-        if(melliCode == null)
+        if (melliCode == null)
             return true;
-        if (melliCode.trim().isEmpty()) {
+        if (melliCode.trim().isEmpty())
             return true; // National Code is empty
-        } else if (melliCode.length() != 10) {
+        else if (melliCode.length() != 10)
             return false; // National Code is less or more than 10 digits
-        } else if (Arrays.asList(identicalDigits).contains(melliCode)) {
+        else if (Arrays.asList(identicalDigits).contains(melliCode))
             return false; // Fake National Code
-        } else {
+        else {
             int sum = 0;
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
                 sum += Character.getNumericValue(melliCode.charAt(i)) * (10 - i);
-            }
 
             int lastDigit;
             int divideRemaining = sum % 11;
 
-            if (divideRemaining < 2) {
+            if (divideRemaining < 2)
                 lastDigit = divideRemaining;
-            } else {
+            else
                 lastDigit = 11 - (divideRemaining);
-            }
 
             return Character.getNumericValue(melliCode.charAt(9)) == lastDigit;
         }
