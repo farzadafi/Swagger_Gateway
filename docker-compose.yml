@@ -1,13 +1,13 @@
 version: '3'
 services:
   zipkin:
-    container_name: zipkin
     image: openzipkin/zipkin
+    container_name: zipkin
     ports:
       - "9411:9411"
     networks:
       farzad_network:
-        ipv4_address: 172.10.0.10
+        ipv4_address: 172.20.0.10
 
 networks:
   farzad_network:
