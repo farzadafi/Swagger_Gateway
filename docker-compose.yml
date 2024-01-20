@@ -8,6 +8,17 @@ services:
     networks:
       farzad_network:
         ipv4_address: 172.20.0.10
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      farzad_network:
+        ipv4_address: 172.20.0.11
 
 networks:
   farzad_network:
