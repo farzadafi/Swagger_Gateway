@@ -19,6 +19,15 @@ services:
     networks:
       farzad_network:
         ipv4_address: 172.20.0.11
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      farzad_network:
+        ipv4_address: 172.20.0.12
 
 networks:
   farzad_network:
