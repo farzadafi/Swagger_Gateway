@@ -69,6 +69,11 @@
             <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.esotericsoftware.yamlbeans</groupId>
+            <artifactId>yamlbeans</artifactId>
+            <version>1.14</version>
+        </dependency>
     </dependencies>
 
 </project>
