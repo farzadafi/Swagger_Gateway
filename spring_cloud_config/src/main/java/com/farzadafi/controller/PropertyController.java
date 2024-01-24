@@ -24,4 +24,10 @@ public class PropertyController {
         List<String> allYmlFileNames = propertyService.getAllYmlFileNames();
         return new ResponseEntity<>(allYmlFileNames, HttpStatus.OK);
     }
+
+    @GetMapping("/get-json-values/{propertyFileName}")
+    public ResponseEntity<String> getJsonValuesYmlFile(@PathVariable String propertyFileName) {
+        String keysValueJson = propertyService.convertYmlToJson(propertyFileName);
+        return new ResponseEntity<>(keysValueJson, HttpStatus.OK);
+    }
 }
