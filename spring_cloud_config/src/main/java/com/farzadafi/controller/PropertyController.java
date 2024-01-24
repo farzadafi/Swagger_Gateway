@@ -13,4 +13,15 @@ import java.util.List;
 @RequestMapping("/config")
 public class PropertyController {
 
+    private final PropertyService propertyService;
+
+    public PropertyController(PropertyService propertyService) {
+        this.propertyService = propertyService;
+    }
+
+    @GetMapping("/get-names")
+    public ResponseEntity<List<String>> getAllYmlFileNames() {
+        List<String> allYmlFileNames = propertyService.getAllYmlFileNames();
+        return new ResponseEntity<>(allYmlFileNames, HttpStatus.OK);
+    }
 }
