@@ -35,4 +35,9 @@ public class PropertyController {
     public void updateProperty(@PathVariable String serverName, @ModelAttribute MultipartFile file) {
         propertyService.updateYamlKey(serverName, file);
     }
+
+    @GetMapping("/reset/{serverName}")
+    public void resetPropertyFile(@PathVariable String serverName) {
+        propertyService.resetPropertyFile(serverName);
+    }
 }
