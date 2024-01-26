@@ -30,4 +30,9 @@ public class PropertyController {
         String keysValueJson = propertyService.convertYmlToJson(propertyFileName);
         return new ResponseEntity<>(keysValueJson, HttpStatus.OK);
     }
+
+    @PostMapping(value = "/update-property/{serverName}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void updateProperty(@PathVariable String serverName, @ModelAttribute MultipartFile file) {
+        propertyService.updateYamlKey(serverName, file);
+    }
 }
