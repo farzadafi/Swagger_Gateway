@@ -20,6 +20,7 @@
     <modules>
         <module>user_management</module>
         <module>spring_cloud_config</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>
