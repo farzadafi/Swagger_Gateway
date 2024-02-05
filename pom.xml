@@ -22,6 +22,7 @@
         <module>spring_cloud_config</module>
         <module>eureka_server</module>
         <module>api-gateway</module>
+        <module>authentication_server</module>
     </modules>
 
     <properties>
