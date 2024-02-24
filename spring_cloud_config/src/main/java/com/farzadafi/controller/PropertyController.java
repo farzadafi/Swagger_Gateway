@@ -2,10 +2,11 @@ package com.farzadafi.controller;
 
 import com.farzadafi.service.PropertyService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,15 +30,5 @@ public class PropertyController {
     public ResponseEntity<String> getJsonValuesYmlFile(@PathVariable String propertyFileName) {
         String keysValueJson = propertyService.convertYmlToJson(propertyFileName);
         return new ResponseEntity<>(keysValueJson, HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/update-property/{serverName}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void updateProperty(@PathVariable String serverName, @ModelAttribute MultipartFile file) {
-        propertyService.updateYamlKey(serverName, file);
-    }
-
-    @GetMapping("/reset/{serverName}")
-    public void resetPropertyFile(@PathVariable String serverName) {
-        propertyService.resetPropertyFile(serverName);
     }
 }
