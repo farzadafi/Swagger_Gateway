@@ -52,4 +52,8 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     List<Role> roles = new ArrayList<>();
+
+    private boolean isActive;
+
+    private boolean isBlock;
 }
