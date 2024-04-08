@@ -1,7 +1,6 @@
 package com.farzadafi.controller;
 
-import com.farzadafi.dto.UserResponseDto;
-import com.farzadafi.dto.UserSaveRequestDto;
+import com.farzadafi.dto.*;
 import com.farzadafi.model.User;
 import com.farzadafi.service.UserService;
 import jakarta.validation.Valid;
@@ -11,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,4 +29,12 @@ public class UserController {
         UserResponseDto userDtoAfterSaved = mapper.map(user, UserResponseDto.class);
         return new ResponseEntity<>(userDtoAfterSaved, HttpStatus.CREATED);
     }
+
+    @PutMapping
+    public ResponseEntity<UserResponseDto> update(@RequestBody UserUpdateRequestDto userUpdateRequestDto) {
+        User userUpdate = userService.update(userUpdateRequestDto);
+        UserResponseDto userAfterUpdate = mapper.map(userUpdate, UserResponseDto.class);
+        return new ResponseEntity<>(userAfterUpdate, HttpStatus.OK);
+    }
+
 }
