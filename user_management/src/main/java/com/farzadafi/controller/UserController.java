@@ -37,4 +37,9 @@ public class UserController {
         return new ResponseEntity<>(userAfterUpdate, HttpStatus.OK);
     }
 
+    @PutMapping("/change-password")
+    public ResponseDto<Integer> updatePassword(@RequestBody @Valid ChangePasswordDto changePasswordDto) {
+        userService.updatePassword(changePasswordDto);
+        return new ResponseDto<>("changed password successfully" , 200);
+    }
 }
