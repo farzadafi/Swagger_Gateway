@@ -27,4 +27,11 @@ public class AdminController {
         UserResponseDto userAfterUpdate = mapper.map(userUpdate, UserResponseDto.class);
         return new ResponseEntity<>(userAfterUpdate, HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete-user")
+    public ResponseDto<Integer> update(@RequestParam String username) {
+        userService.delete(username);
+        return new ResponseDto<>(String.format("%s remove successfully", username), 200);
+    }
+
 }
