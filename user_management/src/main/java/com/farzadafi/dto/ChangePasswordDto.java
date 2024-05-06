@@ -18,9 +18,13 @@ import static com.farzadafi.utility.Constant.PASSWORD_PATTERN;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ChangePasswordDto {
 
+    @NotNull(message = "current password must have value")
     String currentPassword;
 
+    @NotNull(message = "new password must have value")
+    @Pattern(regexp = PASSWORD_PATTERN, message = PASSWORD_MESSAGE)
     String newPassword;
 
+    @NotNull(message = "confirm new password must have value")
     String confirmNewPassword;
 }
