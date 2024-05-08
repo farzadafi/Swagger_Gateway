@@ -27,4 +27,10 @@ public class ChangePasswordDto {
 
     @NotNull(message = "confirm new password must have value")
     String confirmNewPassword;
+
+    @JsonIgnore
+    @AssertTrue(message = "New password and confirm password must match")
+    public boolean isPasswordConfirmed() {
+        return newPassword.equals(confirmNewPassword);
+    }
 }
